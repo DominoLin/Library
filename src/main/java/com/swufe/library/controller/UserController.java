@@ -23,8 +23,8 @@ public class UserController {
         return "login";
     }
     @PostMapping("/login")
-    public String dologin(@RequestParam("id") int id, @RequestParam("password") String password, Model model){
-        User user = userService.getUser(id,password);
+    public String dologin(@RequestParam("account") int account, @RequestParam("password") String password, Model model){
+        User user = userService.getUser(account,password);
         if (user!=null){
             System.out.println(user.getUsername());
             model.addAttribute("user", user);

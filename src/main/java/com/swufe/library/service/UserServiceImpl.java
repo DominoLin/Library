@@ -10,7 +10,11 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserDao userDao;
 
-    public User getUser(int id, String password) {
-        return userDao.getUser(id,password);
+    public User getUser(int account, String password) {
+        return userDao.getUser(account,password);
+    }
+
+    public void addUser(int account, String username, String password){
+        userDao.addUser(account, username, password);
     }
 }

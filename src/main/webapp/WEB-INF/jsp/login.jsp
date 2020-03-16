@@ -12,7 +12,7 @@
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/user/login" method="post">
-    学号：<input type="text" name="id" required maxlength="24"/><br>
+    学号：<input type="text" name="account" required maxlength="24"/><br>
     密码：<input type="password" name="password" required maxlength="24"/><br>
     <button type="submit">提交</button>
 
