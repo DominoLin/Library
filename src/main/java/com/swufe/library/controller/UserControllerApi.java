@@ -30,6 +30,6 @@ public class UserControllerApi {
     public String addUser(int account, String username, String password){
         System.out.println("account:"+account+", username:"+username+", password:"+password);
         userService.addUser(account,username,password);
-        return "Success!";
+        return "\"status:Success!\"";
     }
 }
