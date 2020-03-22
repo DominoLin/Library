@@ -22,4 +22,8 @@ public interface BookDao {
     @Select("select * from book")
     List<Book> queryAllBook();
 
+    @Select("select * from book where name like '%${bookName}%'")
+
+    List<Book> queryByName(String bookName);
+
 }

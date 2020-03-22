@@ -11,9 +11,9 @@
     <title>首页</title>
 </head>
 <body>
-<h1>Welcome to Library, ${user.username}</h1>
+<h1>Welcome to Library, ${reader.username}</h1>
 
-<a href="${pageContext.request.contextPath}/user/login">登录</a>
+<a href="${pageContext.request.contextPath}/reader/login">登录</a>
 <a href="${pageContext.request.contextPath}/book/all">进入书籍展示页面</a>
 </body>
 </html>

@@ -1,8 +1,8 @@
 package com.swufe.library.controller;
 
 
-import com.swufe.library.pojo.User;
-import com.swufe.library.service.UserService;
+import com.swufe.library.pojo.Reader;
+import com.swufe.library.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    private UserService userService;
+    private ReaderService readerService;
 
     @GetMapping("/login")
     public String toLogin(){
@@ -24,10 +24,10 @@ public class UserController {
     }
     @PostMapping("/login")
     public String dologin(@RequestParam("account") int account, @RequestParam("password") String password, Model model){
-        User user = userService.getUser(account,password);
-        if (user!=null){
-            System.out.println(user.getUsername());
-            model.addAttribute("user", user);
+        Reader reader = readerService.getReader(account,password);
+        if (reader !=null){
+            System.out.println(reader.getUsername());
+            model.addAttribute("user", reader);
             return "index";
         }else {
             System.out.println("未找到对象");

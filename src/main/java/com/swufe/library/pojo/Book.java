@@ -80,12 +80,12 @@ public class Book {
         this.price = price;
     }
 
-    public Date getPub_data() {
+    public Date getPub_date() {
         return pub_date;
     }
 
-    public void setPub_data(Date pub_data) {
-        this.pub_date = pub_data;
+    public void setPub_date(Date pub_date) {
+        this.pub_date = pub_date;
     }
 
     public int getClass_id() {

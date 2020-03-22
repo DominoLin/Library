@@ -37,4 +37,9 @@ public class BookServiceImpl implements BookService{
     public List<Book> queryAllBook() {
         return bookDao.queryAllBook();
     }
+
+    @Override
+    public List<Book> queryBookByName(String bookName) {
+        return bookDao.queryByName(bookName);
+    }
 }

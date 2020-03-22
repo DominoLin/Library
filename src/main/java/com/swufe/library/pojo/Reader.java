@@ -1,9 +1,11 @@
 package com.swufe.library.pojo;
 
-public class User {
+public class Reader {
+
     private int account;
     private String username;
     private String password;
+    private String telephone;
 
     public int getAccount() {
         return account;
@@ -27,5 +29,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 }
