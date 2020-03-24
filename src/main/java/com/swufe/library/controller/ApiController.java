@@ -2,10 +2,7 @@ package com.swufe.library.controller;
 
 
 import com.swufe.library.pojo.*;
-import com.swufe.library.service.BookService;
-import com.swufe.library.service.LendService;
-import com.swufe.library.service.ReaderInfoService;
-import com.swufe.library.service.ReaderService;
+import com.swufe.library.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,12 +26,15 @@ public class ApiController {
     @Autowired
     private LendService lendService;
 
+    @Autowired
+    private CollectionsService collectionsService;
+
 
     //登录
     @RequestMapping("/login")
     public Result login(int account, String password){
         Result<Reader> result = new Result<>();
-        Reader reader = readerService.getReader(account,password);
+        Reader reader = readerService.login(account,password);
         if(reader != null){
             result.setCode(200);
             result.setMessage("登录成功");
@@ -46,11 +46,12 @@ public class ApiController {
         return result;
     }
 
+
 //    注册
     @RequestMapping("/register")
-    public Result register(int account, String telephone, String username, String password){
+    public Result register(int account, String telephone, String username, String password, String college, String major){
         Result<Reader> result = new Result<>();
-        int i = readerService.addReader(account,telephone,username,password);
+        int i = readerService.register(account, telephone, username, password, college, major);
         if(i == 1){
             result.setCode(200);
             result.setMessage("注册成功");
@@ -61,15 +62,17 @@ public class ApiController {
         return result;
     }
 
+
     //找回密码（根据学号、手机号匹配修改密码）
-    @RequestMapping("/findPwd")
+    @RequestMapping("/resetPwd")
     public Result findPwd(int account,String telephone, String password){
         Result<Reader> result = new Result<>();
+
         int i = readerService.resetPwd(account, telephone, password);
         if(i == 1){
             result.setCode(200);
             result.setMessage("密码修改成功");
-        }else{
+        }else {
             result.setCode(0);
             result.setMessage("学号与电话号码不匹配");
         }
@@ -79,15 +82,15 @@ public class ApiController {
     //获得用户信息（根据account）
     @RequestMapping("userInfo")
     public Result userInfo(int account){
-        Result<ReaderInfo> result = new Result();
-        ReaderInfo readerInfo = readerInfoService.getInfo(account);
-        if(readerInfo == null){
+        Result<Reader> result = new Result();
+        Reader reader = readerService.getReaderInfo(account);
+        if(reader == null){
             result.setCode(0);
             result.setMessage("查找失败");
         }else {
             result.setCode(200);
             result.setMessage("查找成功");
-            result.setData(readerInfo);
+            result.setData(reader);
         }
         return result;
     }
@@ -132,9 +135,9 @@ public class ApiController {
     }
 
     @RequestMapping("/updateLend")
-    public Result updateLend(int account, int book_id){
+    public Result updateLend(int lend_id){
         Result<List<Lend>> result = new Result<>();
-        int i = lendService.updateLend(account,book_id);
+        int i = lendService.updateLend(lend_id);
         if(i == 1){
             result.setCode(200);
             result.setMessage("还书成功");
@@ -160,6 +163,52 @@ public class ApiController {
 //            result.setData(books);
         }
         return result;
-
     }
+
+    @RequestMapping("/getCollection")
+    public Result getCollection(int account){
+        Result<List<Book>> result = new Result<>();
+        List<Book> books = collectionsService.queryByAccount(account);
+        if(!books.isEmpty()){
+            result.setCode(200);
+            result.setMessage("查询成功");
+            result.setData(books);
+        }else {
+            result.setCode(0);
+            result.setMessage("查找失败");
+        }
+        return result;
+    }
+
+    @RequestMapping("/deleteCollection")
+    public Result deleteCollection(int account, int book_id){
+        Result<Collections> result = new Result<>();
+        int i = collectionsService.DeleteById(account,book_id);
+        if(i == 1) {
+            result.setCode(200);
+            result.setMessage("删除成功");
+        }else {
+            result.setCode(0);
+            result.setMessage("删除失败");
+        }
+        return result;
+    }
+
+    @RequestMapping("/addCollection")
+    public Result<Collections> addCollection(int account, int book_id){
+        Result<Collections> result = new Result<>();
+        int i = collectionsService.addCollection(account,book_id);
+        if(i == 1){
+            result.setCode(200);
+            result.setMessage("添加成功");
+        }else {
+            result.setCode(0);
+            result.setMessage("添加失败");
+        }
+        return result;
+    }
+
+
+
+
 }

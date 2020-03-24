@@ -11,20 +11,36 @@ public class ReaderServiceImpl implements ReaderService {
     private ReaderDao readerDao;
 
     @Override
-    public Reader getReader(int account, String password) {
+    public Reader login(int account, String password) {
+
         return readerDao.getReader(account,password);
     }
 
     @Override
-    public int addReader(int account, String telephone, String username, String password) {
-        readerDao.addReader(account,telephone,username,password);
+    public int register(int account, String telephone, String username, String password, String college, String major) {
+        readerDao.addReader(account,telephone,username,password,college,major);
         return 1;
     }
 
+
     @Override
     public int resetPwd(int account, String telephone, String password) {
-        readerDao.resetPwd(account,telephone,password);
-        return 1;
+        if(readerDao.check(account,telephone)!=null){
+            readerDao.resetPwd(account,telephone,password);
+            return 1;
+        }else {
+            return 0;
+        }
+    }
+
+    @Override
+    public Reader getReaderInfo(int account) {
+        Reader reader = readerDao.queryByAccount(account);
+        if(reader!=null){
+            return reader;
+        }else {
+            return null;
+        }
     }
 
 

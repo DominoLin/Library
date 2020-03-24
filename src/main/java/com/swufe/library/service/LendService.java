@@ -11,5 +11,5 @@ public interface LendService {
 
     int addLend(int account, int book_id, String book_name);
 
-    int updateLend(int account,int book_id);
+    int updateLend(int lend_id);
 }

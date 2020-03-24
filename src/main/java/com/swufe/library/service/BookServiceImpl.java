@@ -29,11 +29,6 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public Book queryBookById(int id) {
-        return null;
-    }
-
-    @Override
     public List<Book> queryAllBook() {
         return bookDao.queryAllBook();
     }

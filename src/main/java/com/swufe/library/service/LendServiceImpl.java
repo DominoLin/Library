@@ -31,11 +31,11 @@ public class LendServiceImpl implements LendService {
     }
 
     @Override
-    public int updateLend(int account, int book_id) {
+    public int updateLend(int lend_id) {
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String back_date = simpleDateFormat.format(date);
-        lendDao.updateLend(account,book_id,back_date);
+        lendDao.updateLend(lend_id,back_date);
         return 1;
     }
 

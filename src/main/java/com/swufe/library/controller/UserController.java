@@ -24,7 +24,7 @@ public class UserController {
     }
     @PostMapping("/login")
     public String dologin(@RequestParam("account") int account, @RequestParam("password") String password, Model model){
-        Reader reader = readerService.getReader(account,password);
+        Reader reader = readerService.login(account,password);
         if (reader !=null){
             System.out.println(reader.getUsername());
             model.addAttribute("user", reader);

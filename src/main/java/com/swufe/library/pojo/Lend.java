@@ -3,6 +3,7 @@ package com.swufe.library.pojo;
 import java.util.Date;
 
 public class Lend {
+    private int lend_id;
     private int account;
     private int book_id;
     private String book_name;
@@ -11,6 +12,14 @@ public class Lend {
 
     private String lend_date;
     private String back_date;
+
+    public int getLend_id() {
+        return lend_id;
+    }
+
+    public void setLend_id(int lend_id) {
+        this.lend_id = lend_id;
+    }
 
     public int getAccount() {
         return account;
