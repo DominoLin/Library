@@ -39,5 +39,10 @@ public class LendServiceImpl implements LendService {
         return 1;
     }
 
+    @Override
+    public List<Lend> getAllLend() {
+        return lendDao.queryAllLend();
+    }
+
 
 }

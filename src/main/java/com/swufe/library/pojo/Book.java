@@ -15,6 +15,24 @@ public class Book {
     private Date pub_date;
     private int class_id;
     private int number;
+    private int num;
+    private String position;
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
 
     public int getBook_id() {
         return book_id;

@@ -24,4 +24,6 @@ public interface LendDao {
     @Update("update lend_list set back_date = #{back_date} where lend_id = #{lend_id}")
     int updateLend(int lend_id, String back_date);
 
+    @Select("select * from lend_list")
+    List<Lend> queryAllLend();
 }

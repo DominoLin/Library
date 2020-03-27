@@ -28,7 +28,7 @@ public class UserController {
         if (reader !=null){
             System.out.println(reader.getUsername());
             model.addAttribute("user", reader);
-            return "index";
+            return "/WEB-INF/jsp/index.jsp";
         }else {
             System.out.println("未找到对象");
             return "login";

@@ -5,6 +5,8 @@ import com.swufe.library.pojo.Reader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReaderServiceImpl implements ReaderService {
     @Autowired
@@ -41,6 +43,16 @@ public class ReaderServiceImpl implements ReaderService {
         }else {
             return null;
         }
+    }
+
+    @Override
+    public List<Reader> getAllReaders() {
+        return readerDao.queryAllReaders();
+    }
+
+    @Override
+    public int addReader(int account, String telephone, String username, String password, String college, String major) {
+        return readerDao.addReader(account,telephone,username,"123456",college,major);
     }
 
 

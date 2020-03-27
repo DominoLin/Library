@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 
 @Component
 @Mapper
@@ -17,7 +19,7 @@ public interface ReaderDao {
     Reader getReader(int account, String password);
 
     @Insert("insert into reader(account,telephone,username,password,college,major) values(#{account},#{telephone},#{username},#{password},#{college},#{major})")
-    void addReader(int account, String telephone, String username, String password, String college, String major);
+    int addReader(int account, String telephone, String username, String password, String college, String major);
 
     @Update("update reader set password = #{password} where account = #{account} and telephone = #{telephone}")
     void resetPwd(int account, String telephone, String password);
@@ -30,4 +32,12 @@ public interface ReaderDao {
 
     @Select("select * from reader where account = #{account}")
     Reader queryByAccount(int account);
+
+    @Select("select * from reader")
+    List<Reader> queryAllReaders();
+
+
+    @Insert("insert into reader(account,telephone,username,password,college,major) values(#{account},#{telephone},#{username},#{password},#{college},#{major})")
+    int add(Reader reader);
+
 }

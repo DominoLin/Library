@@ -2,6 +2,8 @@ package com.swufe.library.service;
 
 import com.swufe.library.pojo.Reader;
 
+import java.util.List;
+
 public interface ReaderService {
     //用户登录
     Reader login(int account, String password);
@@ -16,6 +18,8 @@ public interface ReaderService {
 
     Reader getReaderInfo(int account);
 
+    List<Reader> getAllReaders();
 
+    int addReader(int account, String telephone, String username, String password, String college, String major);
 
 }

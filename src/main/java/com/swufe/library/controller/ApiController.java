@@ -21,9 +21,6 @@ public class ApiController {
     private BookService bookService;
 
     @Autowired
-    private ReaderInfoService readerInfoService;
-
-    @Autowired
     private LendService lendService;
 
     @Autowired

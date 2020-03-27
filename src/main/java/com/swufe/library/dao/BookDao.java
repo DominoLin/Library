@@ -1,10 +1,7 @@
 package com.swufe.library.dao;
 
 import com.swufe.library.pojo.Book;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,6 +10,7 @@ import java.util.List;
 @Component
 public interface BookDao {
 
+    @Insert("insert into book(name,author,publish,ISBN,introduction,language,price,class_id,number,position) values(#{name},#{author},#{publish},#{ISBN},#{introduction},#{language},#{price},#{class_id},#{number},#{position})")
     int addBook(Book book);
 
     int deleteBookById(int id);
