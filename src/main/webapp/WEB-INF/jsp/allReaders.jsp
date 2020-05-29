@@ -139,7 +139,10 @@
                                                 <td>${lendList.telephone}</td>
                                                 <td>${lendList.college}</td>
                                                 <td>${lendList.major}</td>
-                                                <td><a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a><a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
+                                                <td>
+                                                    <a href="/reader/editReader?account=${lendList.account}"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
+                                                    <a href="/reader/deleteReader?account=${lendList.account}"><i class="ik ik-trash-2 f-16 text-red"></i></a>
+                                                </td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>

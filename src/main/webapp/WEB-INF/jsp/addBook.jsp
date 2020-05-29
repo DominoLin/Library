@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: x6760
@@ -108,14 +109,16 @@
                         <div class="card">
                             <div class="card-header"><h2>添加书籍</h2></div>
                             <div class="card-body">
-                                <form class="forms-sample" action="/book/addBook" method="post">
+                                <form class="forms-sample" action="/book/addBook" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label for="type">书籍种类</label>
                                                 <select class="form-control" id="type" name="class_id">
-                                                    <option value="1">马克思主义</option>
-                                                    <option value="2">哲学</option>
+                                                    <c:forEach var="typeList" items="${typeList}">
+                                                        <option value="${typeList.class_id}">${typeList.class_name}</option>
+                                                    </c:forEach>
+
                                                 </select>
                                             </div>
                                         </div>
@@ -126,6 +129,8 @@
                                         <label for="name">书籍名称</label>
                                         <input type="text" class="form-control" id="name" placeholder="书籍名称" required name="name">
                                     </div>
+
+
                                     <div class="form-group">
                                         <label for="author">作者</label>
                                         <input type="text" class="form-control" id="author" placeholder="作者" required name="author">
@@ -133,6 +138,10 @@
                                     <div class="form-group">
                                         <label for="publish">出版社名称</label>
                                         <input type="text" class="form-control" id="publish" placeholder="出版社" required name="publish">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="publish">出版时间</label>
+                                        <input type="date" class="form-control" id="pub_date"  required name="pub_date">
                                     </div>
                                     <div class="form-group">
                                         <label for="ISBN">ISBN</label>
@@ -168,6 +177,10 @@
                                     <div class="form-group">
                                         <label for="introduction">书籍简介</label>
                                         <textarea class="form-control" id="introduction" rows="4" name="introduction"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">书籍图片</label>
+                                        <input type="file" name="file" />
                                     </div>
                                     <button type="submit" class="btn btn-primary mr-2">添加</button>
                                     <button class="btn btn-light">取消</button>

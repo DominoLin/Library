@@ -34,4 +34,31 @@ public class ReaderController {
         readerService.addReader(account,telephone,username,"123456",college,major);
         return "redirect:/reader/allReaders";
     }
+
+    @RequestMapping("/deleteReader")
+    public String deleteReader(int account){
+        readerService.deleteById(account);
+        return "redirect:/reader/allReaders";
+    }
+
+    @GetMapping("/editReader")
+    public String toEditReader(int account, Model model){
+        Reader reader = readerService.getReaderInfo(account);
+        model.addAttribute("reader",reader);
+
+        return "editReader";
+    }
+
+    @PostMapping("/editReader")
+    public String editReader(Reader reader){
+        readerService.updateById(reader);
+        return "redirect:/reader/allReaders";
+    }
+
+    @RequestMapping("/test")
+    public String test(Model model){
+        List<Reader> readerList = readerService.getAllReaders();
+        model.addAttribute("readerList", readerList);
+        return "test1";
+    }
 }

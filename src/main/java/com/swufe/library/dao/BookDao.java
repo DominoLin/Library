@@ -10,12 +10,19 @@ import java.util.List;
 @Component
 public interface BookDao {
 
-    @Insert("insert into book(name,author,publish,ISBN,introduction,language,price,class_id,number,position) values(#{name},#{author},#{publish},#{ISBN},#{introduction},#{language},#{price},#{class_id},#{number},#{position})")
+    @Insert("insert into book(name,author,publish,pub_date,ISBN,introduction,language,price,class_id,number,num,position) " +
+            "values(#{name},#{author},#{publish},#{pub_date},#{ISBN},#{introduction},#{language},#{price},#{class_id},#{number},#{number},#{position})")
     int addBook(Book book);
 
+    @Select("select * from book where book_id = #{id}")
+    Book queryBookById(int id);
+
+
+    @Delete("delete from book where book_id = #{id}")
     int deleteBookById(int id);
 
-    int updateBook(Book book);
+    @Update("update book set name=#{name}, author=#{author}, publish=#{publish}, ISBN=#{ISBN}, introduction=#{introduction}, language=#{language}, price=#{price}, class_id=#{class_id},number=#{number},position=#{position} where book_id=#{book_id}")
+    int updateBookById(Book book);
 
 
     @Select("select * from book")

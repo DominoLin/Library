@@ -2,10 +2,7 @@ package com.swufe.library.dao;
 
 import com.swufe.library.pojo.Reader;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -36,8 +33,14 @@ public interface ReaderDao {
     @Select("select * from reader")
     List<Reader> queryAllReaders();
 
-
     @Insert("insert into reader(account,telephone,username,password,college,major) values(#{account},#{telephone},#{username},#{password},#{college},#{major})")
     int add(Reader reader);
+
+    @Delete("delete from reader where account = #{account}")
+    int deleteReaderById(int account);
+
+    @Update("update reader set username = #{username}, telephone = #{telephone}, college=#{college}, major=#{major} " +
+            "where account = #{account}")
+    int updateById(Reader reader);
 
 }

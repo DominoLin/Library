@@ -141,7 +141,10 @@
                                                 <td>${book.publish}</td>
                                                 <td>${book.ISBN}</td>
                                                 <td>${book.number}</td>
-                                                <td><a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a><a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
+                                                <td>
+                                                    <a href="/book/editBook?book_id=${book.book_id}"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
+                                                    <a href="/book/deleteBook?book_id=${book.book_id}"><i class="ik ik-trash-2 f-16 text-red"></i></a>
+                                                </td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>

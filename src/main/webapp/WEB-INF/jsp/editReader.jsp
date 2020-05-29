@@ -1,16 +1,17 @@
 <%--
   Created by IntelliJ IDEA.
   User: x6760
-  Date: 2020-3-26
-  Time: 14:13
+  Date: 2020-5-24
+  Time: 9:47
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>添加用户</title>
+    <title>修改用户</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -106,29 +107,29 @@
                 <div class="col-md-10">
                     <div class="row">
                         <div class="card">
-                            <div class="card-header"><h2>添加用户</h2></div>
+                            <div class="card-header"><h2>修改用户</h2></div>
                             <div class="card-body">
-                                <form class="forms-sample" action="/reader/addReader" method="post">
+                                <form class="forms-sample" action="/reader/editReader" method="post">
                                     <div class="form-group">
                                         <label for="account">学号</label>
-                                        <input type="text" class="form-control" id="account" placeholder="学号" required name="account">
+                                        <input type="text" class="form-control" id="account" placeholder="学号" required name="account" value="${reader.account}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="name">姓名</label>
-                                        <input type="text" class="form-control" id="name" placeholder="姓名" required name="username">
+                                        <input type="text" class="form-control" id="name" placeholder="姓名" required name="username" value="${reader.username}">
                                     </div>
                                     <div class="form-group">
                                         <label for="telephone">电话</label>
-                                        <input type="text" class="form-control" id="telephone" placeholder="电话" required name="telephone">
+                                        <input type="text" class="form-control" id="telephone" placeholder="电话" required name="telephone" value="${reader.telephone}">
                                     </div>
                                     <div class="form-group">
                                         <label for="college">学院</label>
-                                        <input type="text" class="form-control" id="college" placeholder="学院" required name="college">
+                                        <input type="text" class="form-control" id="college" placeholder="学院" required name="college" value="${reader.college}">
                                     </div>
                                     <div class="form-group">
                                         <label for="major">专业</label>
-                                        <input type="text" class="form-control" id="major" placeholder="专业" required name="major">
+                                        <input type="text" class="form-control" id="major" placeholder="专业" required name="major" value="${reader.major}">
                                     </div>
 
                                     <%--                                    <div class="form-group">--%>
@@ -141,7 +142,7 @@
                                     <%--                                                    </span>--%>
                                     <%--                                        </div>--%>
                                     <%--                                    </div>--%>
-                                    <button type="submit" class="btn btn-primary mr-2">添加</button>
+                                    <button type="submit" class="btn btn-primary mr-2">修改</button>
                                     <button class="btn btn-light">取消</button>
                                 </form>
                             </div>
@@ -198,3 +199,4 @@
 </script>
 </body>
 </html>
+

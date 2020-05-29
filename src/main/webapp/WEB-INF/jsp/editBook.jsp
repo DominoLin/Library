@@ -1,16 +1,17 @@
 <%--
   Created by IntelliJ IDEA.
   User: x6760
-  Date: 2020-3-26
-  Time: 14:13
+  Date: 2020-5-21
+  Time: 16:14
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>添加用户</title>
+    <title>修改书籍</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,14 +73,14 @@
                 <div class="nav-container">
                     <nav id="main-menu-navigation" class="navigation-main">
                         <div class="nav-lavel">菜单</div>
-                        <div class="nav-item has-sub">
+                        <div class="nav-item has-sub open">
                             <a href="javascript:void(0)"><i class="ik ik-book-open"></i><span>书籍管理</span></a>
                             <div class="submenu-content active" style="">
                                 <a href="/book/all" class="menu-item is-shown">查看书籍</a>
                                 <a href="/book/addBook" class="menu-item is-shown">添加书籍</a>
                             </div>
                         </div>
-                        <div class="nav-item has-sub open">
+                        <div class="nav-item has-sub">
                             <a href="javascript:void(0)"><i class="ik ik-user"></i><span>用户管理</span></a>
                             <div class="submenu-content active" style="">
                                 <a href="/reader/allReaders" class="menu-item is-shown">查看用户</a>
@@ -106,29 +107,58 @@
                 <div class="col-md-10">
                     <div class="row">
                         <div class="card">
-                            <div class="card-header"><h2>添加用户</h2></div>
+                            <div class="card-header"><h2>修改书籍</h2></div>
                             <div class="card-body">
-                                <form class="forms-sample" action="/reader/addReader" method="post">
+                                <form class="forms-sample" action="/book/editBook" method="post">
                                     <div class="form-group">
-                                        <label for="account">学号</label>
-                                        <input type="text" class="form-control" id="account" placeholder="学号" required name="account">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="type">书籍种类</label>
+                                                <select class="form-control" id="type" name="class_id">
+                                                    <option value="${book.class_id}" selected>${book.class_id}</option>
+                                                    <c:forEach var="typeList" items="${typeList}">
+                                                        <option value="${typeList.class_id}">${typeList.class_name}</option>
+                                                    </c:forEach>
+
+
+                                                </select>
+                                            </div>
+                                        </div>
+
                                     </div>
+                                    <input type="hidden" name="book_id" value="${book.book_id}">
 
                                     <div class="form-group">
-                                        <label for="name">姓名</label>
-                                        <input type="text" class="form-control" id="name" placeholder="姓名" required name="username">
+                                        <label for="name">书籍名称</label>
+                                        <input type="text" class="form-control" id="name" placeholder="书籍名称" required name="name" value="${book.name}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="telephone">电话</label>
-                                        <input type="text" class="form-control" id="telephone" placeholder="电话" required name="telephone">
+                                        <label for="author">作者</label>
+                                        <input type="text" class="form-control" id="author" placeholder="作者" required name="author" value="${book.author}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="college">学院</label>
-                                        <input type="text" class="form-control" id="college" placeholder="学院" required name="college">
+                                        <label for="publish">出版社名称</label>
+                                        <input type="text" class="form-control" id="publish" placeholder="出版社" required name="publish" value="${book.publish}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="major">专业</label>
-                                        <input type="text" class="form-control" id="major" placeholder="专业" required name="major">
+                                        <label for="ISBN">ISBN</label>
+                                        <input type="text" class="form-control" id="ISBN" placeholder="ISBN" required name="ISBN" value="${book.ISBN}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="language">语言</label>
+                                        <input type="text" class="form-control" id="language" placeholder="语言" required name="language" value="${book.language}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">价格</label>
+                                        <input type="text" class="form-control" id="price" placeholder="价格" required name="price" value="${book.price}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="position">馆藏位置</label>
+                                        <input type="text" class="form-control" id="position" placeholder="馆藏位置" required name="position" value="${book.position}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="number">数量</label>
+                                        <input type="text" class="form-control" id="number" placeholder="数量" required name="number" value="${book.number}">
                                     </div>
 
                                     <%--                                    <div class="form-group">--%>
@@ -141,7 +171,11 @@
                                     <%--                                                    </span>--%>
                                     <%--                                        </div>--%>
                                     <%--                                    </div>--%>
-                                    <button type="submit" class="btn btn-primary mr-2">添加</button>
+                                    <div class="form-group">
+                                        <label for="introduction">书籍简介</label>
+                                        <textarea class="form-control" id="introduction" rows="4" name="introduction" >${book.introduction}</textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mr-2">修改</button>
                                     <button class="btn btn-light">取消</button>
                                 </form>
                             </div>

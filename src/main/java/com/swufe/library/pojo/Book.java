@@ -1,7 +1,7 @@
 package com.swufe.library.pojo;
 
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Book {
     private int book_id;

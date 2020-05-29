@@ -4,6 +4,7 @@ package com.swufe.library.controller;
 import com.swufe.library.pojo.*;
 import com.swufe.library.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -186,7 +187,7 @@ public class ApiController {
             result.setMessage("删除成功");
         }else {
             result.setCode(0);
-            result.setMessage("删除失败");
+            result.setMessage("删除成功");
         }
         return result;
     }
@@ -204,6 +205,8 @@ public class ApiController {
         }
         return result;
     }
+
+
 
 
 

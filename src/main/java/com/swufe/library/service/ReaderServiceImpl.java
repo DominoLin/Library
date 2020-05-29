@@ -55,5 +55,15 @@ public class ReaderServiceImpl implements ReaderService {
         return readerDao.addReader(account,telephone,username,"123456",college,major);
     }
 
+    @Override
+    public int deleteById(int account) {
+        return readerDao.deleteReaderById(account);
+    }
+
+    @Override
+    public int updateById(Reader reader) {
+        return readerDao.updateById(reader);
+    }
+
 
 }

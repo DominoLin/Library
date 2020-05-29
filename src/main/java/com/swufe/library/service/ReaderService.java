@@ -22,4 +22,8 @@ public interface ReaderService {
 
     int addReader(int account, String telephone, String username, String password, String college, String major);
 
+    int deleteById(int account);
+
+    int updateById(Reader reader);
+
 }

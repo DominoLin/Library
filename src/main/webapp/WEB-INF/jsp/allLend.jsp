@@ -80,14 +80,14 @@
                                 <a href="/book/addBook" class="menu-item is-shown">添加书籍</a>
                             </div>
                         </div>
-                        <div class="nav-item has-sub open">
+                        <div class="nav-item has-sub" >
                             <a href="javascript:void(0)"><i class="ik ik-user"></i><span>用户管理</span></a>
                             <div class="submenu-content active" style="">
                                 <a href="/reader/allReaders" class="menu-item is-shown">查看用户</a>
                                 <a href="/reader/addReader" class="menu-item is-shown">添加用户</a>
                             </div>
                         </div>
-                        <div class="nav-item">
+                        <div class="nav-item active">
                             <a href="/lend/allLend"><i class="ik ik-list"></i><span>借阅管理</span> </a>
                         </div>
                         <div class="nav-item">
@@ -126,6 +126,7 @@
                                             <th>借阅号</th>
                                             <th>学号</th>
                                             <th>书籍编号</th>
+                                            <th>书籍名称</th>
                                             <th>借书时间</th>
                                             <th>还书时间</th>
                                             <th>操作</th>
@@ -137,6 +138,8 @@
                                                 <td>${lendList.lend_id}</td>
                                                 <td>${lendList.account}</td>
                                                 <td>${lendList.book_id}</td>
+
+                                                <td>${lendList.book_name}</td>
                                                 <td>${lendList.lend_date}</td>
                                                 <td>${lendList.back_date}</td>
                                                 <td><a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a><a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
